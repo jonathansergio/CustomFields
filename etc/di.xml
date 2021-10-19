@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Sales\Api\OrderRepositoryInterface">
+        <plugin name="orderInformationUpdate" type="Js\CustomFields\Plugin\Api\OrderRepository" />
+    </type>
+    <type name="Magento\Sales\Block\Adminhtml\Order\Create\Form\Account">
+        <plugin name="after_order_create_data" type="Js\CustomFields\Plugin\Sales\Block\Adminhtml\Order\Create\Form\SellerCode" sortOrder="10"/>
+    </type>
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="seller_code" xsi:type="string">sales_order.seller_code</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <preference for="Js\CustomFields\Api\Data\CustomerApiDataInterface" type="Js\CustomFields\Model\CustomerApiData"/>
+</config>

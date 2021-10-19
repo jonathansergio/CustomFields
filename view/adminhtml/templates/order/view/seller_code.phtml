@@ -1,0 +1,28 @@
+<?php
+/**
+ * @var \Js\CustomOrderAttributes\Block\Adminhtml\Order\View\SellerCode $block
+ */
+?>
+<?php
+/** @var string $parentOrderIncrement */
+$parentOrderIncrement = $block->getSellerCode();
+/** @var string $relatedOrderId */
+$relatedOrderId = $block->getRelatedOrderId();
+?>
+<section class="admin__page-section">
+    <div class="admin__page-section-title">
+        <span class="title"><?= /* @escapeNotVerified */
+            __('Seller Code') ?></span>
+    </div>
+    <div class="empty-text">
+    <?php if (!empty($parentOrderIncrement)): ?>
+        <?php if ($relatedOrderId) :?>
+                <?= $parentOrderIncrement;?>
+        <?php else:?>
+            <?= $parentOrderIncrement;?> - <?= __('This order was not found.') ?>
+        <?php endif;?>
+    <?php else:?>
+        <?= __('No seller is associated.') ?>
+    <?php endif;?>
+    </div>
+</section>

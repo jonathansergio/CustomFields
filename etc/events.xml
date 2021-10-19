@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_order_load_after">
+        <observer name="customAttribbuteLoadCustomAttributes"
+                  instance="Js\CustomFields\Observer\SalesOrderLoadAfter" />
+    </event>
+    <event name="adminhtml_sales_order_create_process_data">
+        <observer name="customAttribbuteSalesOrderCreateProcessData"
+                  instance="Js\CustomFields\Observer\AdminhtmlSalesOrderCreateProcessData"/>
+    </event>
+    <event name="sales_model_service_quote_submit_before">
+        <observer name="customAttribbutesCopyFieldsetBeforeSubmitQuote"
+                  instance="Js\CustomFields\Observer\SaveOrderBeforeSalesModelQuoteObserver" />
+    </event>
+</config>
